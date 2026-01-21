@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>부현민 포트폴리오</title>
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/index.css" />
+  </head>
+
+  <body>
+    <header>
+      <a href="index.html">
+        <h1 class="logo">BHM</h1>
+      </a>
+      <img id="img1" src="./img/Menu.png" alt="메뉴창" />
+    </header>
+
+    <main>
+      <section class="hero">
+        <h2>
+          경복대학교<br />소프트웨어융합과<br />(학생)
+          <span class="name">부현민</span>입니다.
+        </h2>
+        <p>(자세한 내용을 알고 싶다면 아래로 내려주세요.)</p>
+      </section>
+
+        <aside class="side_bar js-side_bar">
+          <ul>
+            <li></li>
+            <li><a href="my-hobby.html">hobby</a></li>
+            <li><a href="favorite-sport.html">sports</a></li>
+          </ul>
+          <button onclick="sidebar.close()">SideBar Close</button>
+        </aside>
+      </div>
+
+      
+
+      <section class="section">
+        <div class="hobby-grid">
+          <a href="my-hobby.html" class="hobby-card">
+            <h3 class="category">My-hobby</h3>
+            <h2>내가 많이 보는 영상 미디어</h2>
+            <p>많이 보는 장르</p>
+            <div class="tech-tags">
+              <span class="tag">Animation</span>
+              <span class="tag">Movie</span>
+              <span class="tag">Game</span>
+            </div>
+          </a>
+
+          <a href="favorite-sport.html" class="hobby-card">
+            <h3 class="category">My favorite sports</h3>
+            <h2>내가 많이 보는 스포츠</h2>
+            <p>많이 보는 스포츠</p>
+            <div class="tech-tags">
+              <span class="tag">soccer</span>
+              <span class="tag">F1</span>
+            </div>
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <a href="#" class="top-btn">
+      <img src="img/up.png" alt="맨 위로 가기" />
+    </a>
+
+    <script>
+      class SideBar {
+        constructor(target, direction) {
+          if (typeof target === "string") {
+            this.target = document.querySelector(target);
+          } else {
+            this.target = target;
+          }
+
+          this.direction = direction;
+          this.opend = false;
+          this.width = this.target.offsetWidth || 250;
+          this.init();
+        }
+
+        init() {
+          this.target.style[this.direction] = `-${this.width}px`;
+        }
+
+        open() {
+          this.opend = true;
+          this.target.style[this.direction] = `0`;
+        }
+
+        close() {
+          this.target.style[this.direction] = `-${this.width}px`;
+          this.opend = false;
+        }
+
+        toggle() {
+          if (this.opend) {
+            this.close();
+          } else {
+            this.open();
+          }
+        }
+      }
+
+      const sidebar = new SideBar(".js-side_bar", "right");
+
+      const menuImg = document.getElementById("img1");
+
+      if (menuImg) {
+        menuImg.addEventListener("click", () => {
+          sidebar.toggle();
+        });
+      }
+    </script>
+
+    <footer>
+      <p>© 2003/03/28 BOOHYUNMIN</p>
+    </footer>
+  </body>
+</html>
